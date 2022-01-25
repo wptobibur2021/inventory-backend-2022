@@ -15,7 +15,7 @@ const stockRoute = require('./Routers/stock')
 const orderRoute = require('./Routers/order')
 const damageRoute = require('./Routers/damage')
 const returnRoute = require('./Routers/return')
-const userRoute = require('./Routers/users')
+const userRoute = require('./Routers/user')
 
 /**
  *  ======================

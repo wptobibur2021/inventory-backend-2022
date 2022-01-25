@@ -7,7 +7,7 @@
 import {BulkOperationBase as User} from "mongodb/mongodb.ts34";
 
 const router = require('express').Router()
-const Users = require('../Models/Users')
+const User = require('../Models/User')
 const bcrypt = require('bcrypt')
 
 // User Registration
@@ -16,7 +16,7 @@ router.post('registration', async (req, res) => {
         // Password Generate
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
-        const newUser = await new Users({
+        const newUser = await new User({
             fullName: req.body.fullName,
             password: hashedPassword,
             email: req.body.email,
