@@ -1,6 +1,6 @@
 /**
  * ===================
- * CATEGORY ROUTER DECLARATION BELOW
+ * Brand ROUTER DECLARATION BELOW
  * ===================
  */
 
