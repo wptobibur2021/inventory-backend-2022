@@ -1,10 +1,10 @@
 /**
  * =====================
- *  CART MODELS DECLARATION BELOW
+ *  USER MODELS DECLARATION BELOW
  * ====================
  */
 const mongoose = require('mongoose')
-const UsersSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     fullName: {
       type: 'string',
       required: true
@@ -30,4 +30,4 @@ const UsersSchema = new mongoose.Schema({
         required: true
     }
 }, {timestamps: true})
-module.exports = mongoose.model('Users', UsersSchema)
+module.exports = mongoose.model('User', UserSchema)

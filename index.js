@@ -15,7 +15,7 @@ const stockRoute = require('./Routers/stock')
 const orderRoute = require('./Routers/order')
 const damageRoute = require('./Routers/damage')
 const returnRoute = require('./Routers/return')
-//const userRoute = require('./Routers/user')
+const userRoute = require('./Routers/user')
 
 /**
  *  ======================
@@ -35,7 +35,7 @@ app.use('/api/stock', stockRoute)
 app.use('/api/order', orderRoute)
 app.use('/api/damage', damageRoute)
 app.use('/api/return', returnRoute)
-//app.use('/api/user', userRoute)
+app.use('/api/user', userRoute)
 
 
 

@@ -3,9 +3,6 @@
  * USER ROUTER DECLARATION BELOW
  * ===================
  */
-
-import {BulkOperationBase as User} from "mongodb/mongodb.ts34";
-
 const router = require('express').Router()
 const User = require('../Models/User')
 const bcrypt = require('bcrypt')
