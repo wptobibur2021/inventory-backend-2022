@@ -62,16 +62,25 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 
 
 // Backend Server Start Port
-const port = process.env.PORT || 7080
+const port = process.env.PORT || 5080
 
 /*
 * ===================
 *   Database Connection
 * ===================
 */
-mongoose.connect(process.env.DB_URL)
+const dbURL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@techbd71.5ewxj.mongodb.net/stockManagement?retryWrites=true&w=majority`
+mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=>console.log('DB Ok'))
     .catch(err => console.log(err))
+
+// mongoose.connect(process.env.DB_URL, {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//         })
+//     .then(() => console.log("Database connected!"))
+//     .catch(err => console.log(err));
+
 
 // Root Get API
 app.get('/', async (req, res)=>{

@@ -8,8 +8,9 @@ const User = require('../Models/User')
 const bcrypt = require('bcrypt')
 
 // User Registration
-router.post('registration', async (req, res) => {
+router.post('/registration', async (req, res) => {
     try{
+        console.log('Data: ', req.body)
         // Password Generate
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
@@ -32,7 +33,7 @@ router.post('registration', async (req, res) => {
 router.post('/login', async (req,res)=>{
     const email = req.body.email
     try{
-        const user = await Users.findOne({ email: email})
+        const user = await User.findOne({ email: email})
         !user && await res.status(400).json('User not found')
         const validPassword = await bcrypt.compare(req.body.password,user.password)
         !validPassword && await res.status(400).json('Wrong password')
