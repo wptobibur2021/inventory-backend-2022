@@ -41,17 +41,24 @@ router.get('/all', async (req,res)=>{
 router.get('/sales', async (req, res) => {
     try {
         const employeeId = req.query.employeeId
+        const pageNo = parseInt(req.query.page || '0')
+        const pageSize = 30
+        //console.log('Total Sales: ', total)
         const query = {
             employeeId: employeeId,
             status: 1
         }
         let result = []
+        const totalPage = await Order.countDocuments({status: 1})
         if(employeeId !== undefined){
-            result = await Order.find(query).populate(['customerId', 'employeeId'])
+            result = await Order.find(query).limit(pageSize).skip(pageSize * pageNo).populate(['customerId', 'employeeId'])
         }else{
-            result = await Order.find({status: 1}).populate(['customerId', 'employeeId'])
+            result = await Order.find({status: 1}).limit(pageSize).skip(pageSize * pageNo).populate(['customerId', 'employeeId'])
         }
-        await res.status(200).json(result)
+        await res.status(200).json({
+            result,
+            totalPage: Math.ceil(totalPage / pageSize)
+        })
     }catch (err) {
         await res.status(500).json(err);
     }

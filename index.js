@@ -6,6 +6,7 @@ const multer  = require('multer')
 const cors = require('cors')
 const path = require("path");
 const productRoute = require('./Routers/products')
+const costRoute = require('./Routers/cost')
 const categoryRoute = require('./Routers/category')
 const brandRoute = require('./Routers/brand')
 const cartRoute = require('./Routers/cart')
@@ -35,6 +36,7 @@ app.use('/api/stock', stockRoute)
 app.use('/api/order', orderRoute)
 app.use('/api/damage', damageRoute)
 app.use('/api/return', returnRoute)
+app.use('/api/cost', costRoute)
 app.use('/api/user', userRoute)
 
 

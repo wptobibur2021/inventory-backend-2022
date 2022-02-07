@@ -10,7 +10,11 @@ const DamageSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Products'
     },
-    price: {
+    salesPrice: {
+        type: Number,
+        required: true
+    },
+    totalPrice:{
         type: Number,
         required: true
     },

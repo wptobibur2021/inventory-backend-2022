@@ -38,7 +38,6 @@ router.post('/login', async (req,res)=>{
         const validPassword = await bcrypt.compare(req.body.password,user.password)
         !validPassword && await res.status(400).json('Wrong password')
         const {password, ...other} = user._doc
-        console.log('Others: ', other)
         await res.status(200).json(other)
     }catch(e){
         await res.status(500).json(e.message)

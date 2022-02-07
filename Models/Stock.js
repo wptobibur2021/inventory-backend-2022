@@ -1,6 +1,6 @@
 /**
  * =====================
- *  PRODUCTS MODELS DECLARATION BELOW
+ *  STOCK MODELS DECLARATION BELOW
  * ====================
  */
 const mongoose = require('mongoose')
