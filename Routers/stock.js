@@ -38,19 +38,14 @@ router.post('/create', async (req,res)=>{
 // Get All Stock Item
 router.get('/all', async (req,res)=>{
     try{
-       //  const brandId = req.query.brandId
-       //  console.log('Brand Id: ', brandId)
-       // const query = {'productId.brandId':brandId}
-       // console.log('Query: ', query)
-
-       //  if(brandId !== undefined){
-       //      result = await Stock.find(query).populate('productId')
-       //  }else{
-       //
-       //  }
+        const brandName = req.query.brandName
+       const query = {brandName:brandName}
         let result = []
-        result = await Stock.find().populate('productId')
-
+        if(brandName !== undefined){
+            result = await Stock.find(query).populate('productId')
+        }else{
+            result = await Stock.find().populate('productId')
+        }
         console.log('Result: ', result)
         await res.status(200).json(result)
     }catch (e) {

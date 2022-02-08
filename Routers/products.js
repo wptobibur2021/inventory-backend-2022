@@ -15,7 +15,7 @@ const Cats = require('../Models/Category')
 */
 router.get('/all', async (rqe,res)=>{
     try{
-        const products = await Products.find().populate(['catId','brandId'])
+        const products = await Products.find()
         await res.status(200).json(products)
     }catch (e) {
         await res.status(500).json(e.message)

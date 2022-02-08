@@ -72,6 +72,10 @@ const port = process.env.PORT || 5080
 * ===================
 */
 const dbURL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@techbd71.5ewxj.mongodb.net/stockManagement?retryWrites=true&w=majority`
+//const dbURL = 'mongodb://127.0.0.1:27017/test'
+// mongoose.connect(dbURL, )
+//     .then(()=>console.log('DB Ok'))
+//     .catch(err => console.log(err))
 mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=>console.log('DB Ok'))
     .catch(err => console.log(err))

@@ -20,6 +20,14 @@ const StockSchema = new mongoose.Schema({
     productQty:{
         type: Number,
         required: true
-    }
+    },
+    brandName:{
+        type: String,
+        required: true
+    },
+    catName:{
+      type: String,
+      required: true
+    },
 },{timestamps: true})
 module.exports = mongoose.model('Stock', StockSchema)
