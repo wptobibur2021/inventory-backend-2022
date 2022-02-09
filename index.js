@@ -80,14 +80,6 @@ mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=>console.log('DB Ok'))
     .catch(err => console.log(err))
 
-// mongoose.connect(process.env.DB_URL, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true
-//         })
-//     .then(() => console.log("Database connected!"))
-//     .catch(err => console.log(err));
-
-
 // Root Get API
 app.get('/', async (req, res)=>{
     await res.send('Backend Server ok')

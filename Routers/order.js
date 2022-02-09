@@ -38,11 +38,22 @@ router.get('/all', async (req,res)=>{
     }
 })
 
+
+/* Total sales function declaration below */
+router.get('/totalSales', async (req,res)=>{
+    try{
+        const result = await Order.find()
+        await res.status(200).json(result)
+    }catch(e){
+        await res.status(500).json(e.message)
+    }
+})
+/* Sales function declaration below */
 router.get('/sales', async (req, res) => {
     try {
         const employeeId = req.query.employeeId
         const pageNo = parseInt(req.query.page || '0')
-        const pageSize = 30
+        const pageSize = 50
         //console.log('Total Sales: ', total)
         const query = {
             employeeId: employeeId,
@@ -63,7 +74,6 @@ router.get('/sales', async (req, res) => {
         await res.status(500).json(err);
     }
 })
-
 // Single Order Get
 router.get('/single/:id', async (req,res)=>{
     try{
