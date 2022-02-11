@@ -43,4 +43,64 @@ router.get('/report', async (req,res)=>{
         await res.status(500).json(e.message)
     }
 })
+/* Monthly Cost */
+router.get('/monthlyCost', async (req,res)=>{
+    try{
+        const date = new Date()
+        const lastMonth = new Date(date.setMonth(date.getMonth()-1))
+        const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth()-1))
+        const cost = await Cost.aggregate([
+            {$match:{createdAt: {$gte: previousMonth}}},
+            {
+                $group:{
+                    _id: {
+                        month: {
+                            $month: "$createdAt"
+                        },
+                        year: {
+                            $year: "$createdAt"
+                        }
+                    },
+                    total:{
+                        $sum: "$costTaka"
+                    }
+                }
+            },
+            {
+                $project:{
+                    _id:{
+                        $concat: [
+                            {
+                                $arrayElemAt:[
+                                    [
+                                        "",
+                                        "January",
+                                        "February",
+                                        "March",
+                                        "April",
+                                        "May",
+                                        "June",
+                                        "July",
+                                        "August",
+                                        "September",
+                                        "October",
+                                        "November",
+                                        "December"
+                                    ], "$_id.month"
+                                ]
+                            }, "-",
+                            {
+                                $toString: "$_id.year"
+                            }
+                        ]
+                    },
+                    total:1,
+                }
+            }
+        ])
+        await res.status(200).json(cost)
+    }catch(e){
+
+    }
+})
 module.exports = router

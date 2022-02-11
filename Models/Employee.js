@@ -11,7 +11,7 @@ const EmployeeSchema = new mongoose.Schema({
         required: true
     },
     nid:{
-        type: Number,
+        type: String,
         required: true
     },
     address:{
@@ -19,7 +19,7 @@ const EmployeeSchema = new mongoose.Schema({
         required: true,
     },
     mobileNo:{
-        type: Number,
+        type: String,
         required: true
     }
 

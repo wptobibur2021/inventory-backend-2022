@@ -15,7 +15,7 @@ const CustomerSchema = new mongoose.Schema({
         required: true
     },
     nid:{
-        type: Number,
+        type: String,
         required: true
     },
     shopName:{
@@ -23,7 +23,7 @@ const CustomerSchema = new mongoose.Schema({
         required: true
     },
     mobileNo:{
-        type: Number,
+        type: String,
         required: true
     }
 }, {timestamps: true})
